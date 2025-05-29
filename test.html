@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confetti Test</title>
+</head>
+<body>
+  <h1>Confetti Test</h1>
+  <button id="startConfetti">Celebrate!</button>
+
+  <script src="https://cdn.jsdelivr.net/gh/Rukshan2000/confetti@main/confetti.min.js"></script>
+  <script>
+    // When the button is clicked, start the confetti
+    document.getElementById('startConfetti').addEventListener('click', () => {
+      confetti.start();
+      
+      // Stop after 5 seconds
+      setTimeout(() => {
+        confetti.stop();
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
