@@ -3,23 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Confetti Test</title>
+  <title>ConfettiJS Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #222;
+      color: #fff;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background: #4ecdc4;
+      color: #222;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #3baaa2;
+    }
+    #buttons {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Confetti Test</h1>
-  <button id="startConfetti">Celebrate!</button>
 
-  <script src="https://cdn.jsdelivr.net/gh/Rukshan2000/confetti@main/confetti.min.js"></script>
-  <script>
-    // When the button is clicked, start the confetti
-    document.getElementById('startConfetti').addEventListener('click', () => {
-      confetti.start();
-      
-      // Stop after 5 seconds
-      setTimeout(() => {
-        confetti.stop();
-      }, 5000);
-    });
-  </script>
+  <h1>ConfettiJS - Try Different Effects</h1>
+  <div id="buttons">
+    <button onclick="ConfettiJS.clear(); ConfettiJS.burst()">Burst</button>
+    <button onclick="ConfettiJS.clear(); ConfettiJS.rain()">Rain</button>
+    <button onclick="ConfettiJS.clear(); ConfettiJS.fountain()">Fountain</button>
+    <button onclick="ConfettiJS.clear(); ConfettiJS.fireworks()">Fireworks</button>
+    <button onclick="ConfettiJS.clear(); ConfettiJS.hearts()">Hearts</button>
+    <button onclick="ConfettiJS.clear(); ConfettiJS.stars()">Stars</button>
+    <button onclick="ConfettiJS.clear(); ConfettiJS.custom({count: 80, shapes: ['circle', 'star', 'heart'], colors: ['#f0932b', '#eb4d4b', '#6ab04c']})">Custom</button>
+    <button onclick="ConfettiJS.clear()">Clear</button>
+  </div>
+
+  <!-- Your ConfettiJS script here -->
+  <script src="https://cdn.jsdelivr.net/gh/Rukshan2000/confetti@main/confetti.js"></script>
+
 </body>
 </html>
