@@ -1,43 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shaan UI Simple Demo</title>
-  <!-- Load Shaan UI JS to inject styles -->
-  <script src="shan-ui.js"></script>
+  <title>Shaan UI - Mind Blowing Full Page</title>
+  <script src="https://cdn.jsdelivr.net/gh/Rukshan2000/confetti@main/shaan-ui.js"></script>
   <style>
-    body {
+    /* Basic reset and background */
+    body, html {
+      margin: 0; padding: 0; height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #eee;
-      margin: 0;
-      padding: 2rem;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    /* Container full screen flex center */
+    .full-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+    /* Headline bigger on desktop */
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      margin: 0.3rem 0;
+      letter-spacing: 0.1em;
+    }
+    /* Subheading */
+    h2 {
+      font-weight: 300;
+      margin-bottom: 2rem;
+      font-size: clamp(1rem, 2.5vw, 2rem);
+      color: #aaa;
+    }
+    /* Navigation buttons container */
+    .btn-group {
+      margin-top: 2rem;
+    }
+    /* Floating circles background */
+    .floating-circles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 0;
+    }
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      filter: blur(50px);
+      animation: floatSlow 20s ease-in-out infinite;
+    }
+    .circle1 {
+      width: 300px; height: 300px;
+      background: #ff6ec4;
+      top: 20%; left: 10%;
+      animation-delay: 0s;
+    }
+    .circle2 {
+      width: 250px; height: 250px;
+      background: #7873f5;
+      top: 60%; left: 70%;
+      animation-delay: 5s;
+    }
+    .circle3 {
+      width: 350px; height: 350px;
+      background: #4ade80;
+      top: 40%; left: 40%;
+      animation-delay: 10s;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-40px) translateX(30px); }
+    }
+    /* Section style */
+    section {
+      min-height: 100vh;
+      padding: 5rem 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 1;
+      position: relative;
+    }
+    /* Card styles */
+    .card {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 24px;
+      padding: 2rem;
+      max-width: 450px;
+      box-shadow: 0 8px 32px rgb(0 0 0 / 0.2);
+      color: #fff;
+      font-size: 1.1rem;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 12px 48px rgba(255,110,196,0.5);
+    }
+    /* Footer style */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    /* Scroll down arrow */
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      font-size: 2rem;
+      color: #ddd;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      z-index: 2;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(15px); }
     }
   </style>
 </head>
 <body>
 
-  <div class="gradient-bg round-medium shadow-depth p-6" style="max-width: 600px; width: 100%; text-align: center;">
-    <h1 class="text-neon pulse-soft text-responsive m-0">Welcome to Shaan UI</h1>
-    <p class="shadow-text-pink underline-gradient cursor-pointer slide-in-left" style="margin-top: 1rem;">
-      Stylish, lightweight, and purely JavaScript powered UI framework.
-    </p>
-
-    <div style="margin-top: 2rem;">
-      <button class="btn-primary bounce-click hover-scale m-2">Primary Button</button>
-      <button class="btn-secondary bounce-click hover-scale m-2">Secondary Button</button>
-    </div>
-
-    <div class="glass float-smooth p-4 mt-8 round-large" style="color:#000;">
-      <h3>Glass Effect Card</h3>
-      <p>This card floats softly and has a cool frosted glass look.</p>
-    </div>
+  <!-- Background floating blurred circles -->
+  <div class="floating-circles">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
   </div>
+
+  <!-- Hero Section -->
+  <section class="full-screen gradient-bg round-large shadow-depth">
+    <h1 class="text-neon pulse-soft">Shaan UI</h1>
+    <h2>Innovative & Lightweight JavaScript UI Framework</h2>
+    <div class="btn-group">
+      <button class="btn-primary bounce-click hover-scale m-2" onclick="alert('You clicked Start!')">Get Started</button>
+      <button class="btn-secondary bounce-click hover-scale m-2" onclick="alert('Learn More Coming Soon')">Learn More</button>
+    </div>
+    <div class="scroll-down" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">⬇️</div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="full-screen">
+    <div class="card glow-pink round-medium shadow-depth">
+      <h3>Vibrant Animations</h3>
+      <p>Built-in glowing, pulsing, and floating animations that make your UI alive and engaging.</p>
+    </div>
+    <div class="card glow-blue round-medium shadow-depth">
+      <h3>Glassmorphism</h3>
+      <p>Stylish translucent glass-effect cards with smooth shadows and hover scaling.</p>
+    </div>
+    <div class="card glow-pink round-medium shadow-depth">
+      <h3>Gradient Magic</h3>
+      <p>Seamless animated gradient backgrounds and underline effects that add a pop of color.</p>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="full-screen gradient-bg round-large shadow-depth">
+    <h2 class="text-neon pulse-soft">Ready to Build Stunning Apps?</h2>
+    <button class="btn-primary bounce-click hover-scale m-2" onclick="alert('Welcome to Shaan UI!')">Start Now</button>
+  </section>
+
+  <footer>
+    Created with 💜 by Shaan UI • Pure JavaScript CDN framework
+  </footer>
 
 </body>
 </html>
