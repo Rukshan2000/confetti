@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peer B</title>
+  <script src="https://cdn.jsdelivr.net/gh/Rukshan2000/confetti@main/peer.js"></script>
+</head>
+<body>
+  <h2>Peer B (Sender)</h2>
+  <input id="target-id" placeholder="Enter Peer A's ID" />
+  <input id="text" placeholder="Message to send" />
+  <button onclick="connectAndSend()">Send</button>
+
+  <script>
+    const peer = new Peer();
+
+    function connectAndSend() {
+      const targetId = document.getElementById('target-id').value;
+      const msg = document.getElementById('text').value;
+
+      const conn = peer.connect(targetId);
+      conn.on('open', () => {
+        conn.send(msg);
+      });
+    }
+  </script>
+</body>
+</html>

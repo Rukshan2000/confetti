@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peer A</title>
+  <script src="https://cdn.jsdelivr.net/gh/Rukshan2000/confetti@main/peer.js"></script>
+</head>
+<body>
+  <h2>Peer A (Receiver)</h2>
+  <p>Your Peer ID: <span id="peer-id"></span></p>
+  <p>Received message: <span id="message"></span></p>
+
+  <script>
+    const peer = new Peer();
+
+    peer.on('open', (id) => {
+      document.getElementById('peer-id').textContent = id;
+    });
+
+    peer.on('connection', (conn) => {
+      conn.on('data', (data) => {
+        document.getElementById('message').textContent = data;
+      });
+    });
+  </script>
+</body>
+</html>
